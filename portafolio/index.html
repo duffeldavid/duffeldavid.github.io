@@ -434,6 +434,11 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
 <script src="js/lenis.min.js"></script>
 <script>
 document.documentElement.classList.replace('no-js','js');
+/* en pantallas grandes usar videos en alta calidad */
+(()=>{if(!matchMedia('(min-width: 901px)').matches)return;
+ document.querySelectorAll('video[src^="media/v/"]').forEach(v=>{v.src=v.getAttribute('src').replace('media/v/','media/v/hd/');});
+ document.querySelectorAll('[data-video^="media/v/"]').forEach(el=>{el.dataset.video=el.dataset.video.replace('media/v/','media/v/hd/');});
+})();
 (()=>{
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const G=!!window.gsap; if(G) gsap.registerPlugin(ScrollTrigger);
