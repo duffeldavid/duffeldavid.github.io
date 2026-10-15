@@ -93,12 +93,13 @@ main,footer,.nav{position:relative;z-index:2}
 @media (max-width:700px){.reel{width:100%}}
 
 /* marquee */
-.marq{overflow:hidden;white-space:nowrap;padding:clamp(50px,7vw,100px) 0}
-.marq .row{display:inline-flex;align-items:center;gap:48px;padding-right:48px}
-.marq span{font-family:var(--serif);font-weight:250;font-size:clamp(46px,7vw,120px);letter-spacing:-.04em;line-height:1}
-.marq span:nth-child(4n+1){font-style:italic}
+.marq{overflow:hidden;white-space:nowrap;padding:clamp(50px,7vw,100px) 0;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.marq.drag{cursor:grabbing}
+.marq .row{display:inline-flex;align-items:center;gap:clamp(28px,4vw,64px);will-change:transform}
+.marq span{font-family:var(--serif);font-weight:250;font-size:clamp(54px,9vw,140px);letter-spacing:-.04em;line-height:1}
+.marq span.it{font-style:italic}
 .marq span.o{color:transparent;-webkit-text-stroke:1px rgba(239,232,220,.5)}
-.marq b{width:18px;height:18px;border-radius:50%;background:var(--grad);flex:none}
+.marq b{width:clamp(14px,2vw,26px);height:clamp(14px,2vw,26px);border-radius:50%;background:var(--grad);flex:none}
 
 .sec{padding-block:clamp(100px,14vw,200px)}
 .label{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--amber);margin-bottom:28px;padding:7px 14px;border-radius:999px;border:1px solid rgba(217,163,91,.35)}
@@ -283,10 +284,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
   </div>
 </div>
 
-<div class="marq" aria-hidden="true"><div class="row" id="mq">
-  <span>Estrategia</span><b></b><span class="o">Identidad</span><b></b><span>Contenido</span><b></b><span class="o">Audiovisual</span><b></b><span>Dirección</span><b></b><span class="o">Divulgación</span><b></b>
-  <span>Estrategia</span><b></b><span class="o">Identidad</span><b></b><span>Contenido</span><b></b><span class="o">Audiovisual</span><b></b><span>Dirección</span><b></b><span class="o">Divulgación</span><b></b>
-</div></div>
+<div class="marq" id="marq" aria-label="Estrategia, Identidad, Contenido, Visibilidad"><div class="row" id="mq"><span class="it">Estrategia</span><b></b><span class="o">Identidad</span><b></b><span class="it">Contenido</span><b></b><span class="o">Visibilidad</span><b></b><span class="it">Estrategia</span><b></b><span class="o">Identidad</span><b></b><span class="it">Contenido</span><b></b><span class="o">Visibilidad</span><b></b><span class="it">Estrategia</span><b></b><span class="o">Identidad</span><b></b><span class="it">Contenido</span><b></b><span class="o">Visibilidad</span><b></b><span class="it">Estrategia</span><b></b><span class="o">Identidad</span><b></b><span class="it">Contenido</span><b></b><span class="o">Visibilidad</span><b></b></div></div>
 
 <section class="sec wrap vision" id="vision">
   <span class="label">Visión</span>
@@ -473,7 +471,7 @@ if(G&&!reduce){
 
   const mq=id=>{const el=document.getElementById(id),w=el.scrollWidth/2;const t=gsap.to(el,{x:-w,duration:36,ease:'none',repeat:-1});
     ScrollTrigger.create({onUpdate:s=>{gsap.to(t,{timeScale:s.direction*(1+Math.min(Math.abs(s.getVelocity())/280,6)),duration:.3,overwrite:true});gsap.to(t,{timeScale:s.direction,duration:1.2,delay:.3});}});};
-  mq('mq');mq('cl');
+  mq('cl');
 
   gsap.to('#mani .w',{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:'#mani',start:'top 80%',end:'bottom 50%',scrub:true}});
   gsap.utils.toArray('.h2').forEach(h=>gsap.from(h,{y:80,opacity:0,filter:'blur(12px)',duration:1.4,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 90%'}}));
@@ -542,6 +540,17 @@ if(fine&&G){
   const orb=document.querySelector('.contact .orb'),ox=gsap.quickTo(orb,'xPercent',{duration:1.5,ease:'power3'}),oy=gsap.quickTo(orb,'yPercent',{duration:1.5,ease:'power3'});
   document.getElementById('contacto').addEventListener('mousemove',e=>{ox(-50+(e.clientX/innerWidth-.5)*30);oy(-50+(e.clientY/innerHeight-.5)*30);});
 }
+
+/* slider de palabras: se desliza solo, se arrastra con mouse o dedo y acelera con el scroll */
+(()=>{const box=document.getElementById('marq'),row=document.getElementById('mq');let x=0,v=0,drag=false,lx=0,boost=0,half=0;
+const auto=reduce?0:-0.9;
+const measure=()=>{half=row.scrollWidth/2;};measure();addEventListener('resize',measure);document.fonts&&document.fonts.ready.then(measure);
+box.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;v=0;box.classList.add('drag');box.setPointerCapture(e.pointerId);});
+box.addEventListener('pointermove',e=>{if(!drag)return;const d=e.clientX-lx;lx=e.clientX;x+=d;v=d;});
+const up=()=>{drag=false;box.classList.remove('drag');};box.addEventListener('pointerup',up);box.addEventListener('pointercancel',up);
+let ly=scrollY;addEventListener('scroll',()=>{boost+=(scrollY-ly)*-0.25;ly=scrollY;},{passive:true});
+const tick=()=>{if(!drag){v*=0.94;boost*=0.9;x+=auto+v+boost*0.1;}
+ if(half){if(x<=-half)x+=half;if(x>0)x-=half;}row.style.transform=`translate3d(${x}px,0,0)`;requestAnimationFrame(tick);};tick();})();
 addEventListener('load',()=>G&&ScrollTrigger.refresh());
 })();
 </script>
