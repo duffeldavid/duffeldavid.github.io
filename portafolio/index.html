@@ -157,10 +157,10 @@ main,footer,.nav{position:relative;z-index:2}
 .card .dur{display:flex;align-items:center;gap:12px;font-size:15px}
 .card .dur .dot-play{width:66px;height:66px;transition:transform .5s var(--ease)}
 .card:hover .dot-play{transform:scale(1.12)}
-.card .side{position:absolute;right:clamp(22px,3vw,48px);top:50%;transform:translateY(-50%);height:80%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;z-index:3;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.card .side{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:84%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;z-index:1;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .card .side video{width:100%;height:100%;object-fit:cover}
 .card.vert>img{filter:blur(24px) brightness(.45) saturate(1.2);transform:scale(1.2)}
-@media (max-width:800px){.card{height:72vh}.card .side{display:none}.card.vert>img{filter:none;transform:none}.card h3{font-size:11vw}}
+@media (max-width:800px){.card{height:72vh}.card .side{inset:0;left:0;top:0;transform:none;height:100%;width:100%;aspect-ratio:auto;border-radius:0;box-shadow:none}.card.vert .ci{background:linear-gradient(0deg,rgba(11,10,8,.85),transparent 45%)}.card.vert>img{filter:none;transform:none}.card h3{font-size:11vw}}
 
 /* alborada */
 .alb{position:relative;overflow:hidden}
