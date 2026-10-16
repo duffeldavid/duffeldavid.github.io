@@ -157,16 +157,10 @@ main,footer,.nav{position:relative;z-index:2}
 .card .dur{display:flex;align-items:center;gap:12px;font-size:15px}
 .card .dur .dot-play{width:66px;height:66px;transition:transform .5s var(--ease)}
 .card:hover .dot-play{transform:scale(1.12)}
-.card .duo{position:absolute;right:clamp(22px,3vw,48px);top:calc(50% + 14px);transform:translateY(-50%);height:72%;display:flex;gap:clamp(12px,1.6vw,24px);z-index:3}
-.card .side{position:relative;height:100%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);cursor:pointer;transition:transform .6s var(--ease)}
-.card .side:hover{transform:translateY(-6px)}
-.card .vl{position:absolute;left:12px;bottom:12px;font-size:12px;padding:6px 11px;border-radius:999px;background:rgba(11,10,8,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--bone)}
-.card.vert h3{font-size:clamp(40px,4.6vw,84px);max-width:7ch}
-.card.vert .bot{flex-direction:column;align-items:flex-start;gap:18px}
-@media (max-width:1000px){.card.vert .duo{left:clamp(16px,3vw,32px);right:clamp(16px,3vw,32px);top:clamp(60px,9vw,90px);transform:none;height:auto}.card.vert .duo .side{flex:1;height:auto;border-radius:16px}.card.vert h3{max-width:none}.card.vert .bot{flex-direction:row;align-items:end}}
+.card .side{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:84%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;z-index:1;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .card .side video{width:100%;height:100%;object-fit:cover}
 .card.vert>img{filter:blur(24px) brightness(.45) saturate(1.2);transform:scale(1.2)}
-@media (max-width:800px){.card{height:72vh}.card.vert h3{font-size:10vw}.card.vert .ci{background:linear-gradient(0deg,rgba(11,10,8,.85),transparent 45%)}.card h3{font-size:11vw}}
+@media (max-width:800px){.card{height:72vh}.card .side{inset:0;left:0;top:0;transform:none;height:100%;width:100%;aspect-ratio:auto;border-radius:0;box-shadow:none}.card.vert .ci{background:linear-gradient(0deg,rgba(11,10,8,.85),transparent 45%)}.card.vert>img{filter:none;transform:none}.card h3{font-size:11vw}}
 
 /* alborada */
 .alb{position:relative;overflow:hidden}
@@ -409,14 +403,11 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
       <div class="ci"><div class="top"><span class="chip glass">Congreso científico</span><span class="num">03</span></div>
       <div class="bot"><h3>Petrophase <em>2022</em></h3><span class="dur"><span class="dot-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"/></svg></span>1:00</span></div></div>
     </article>
-    <article class="card vert" data-video="media/v/cata-la-quinta.mp4" tabindex="0" role="button" aria-label="Ver reels publicitarios">
+    <article class="card vert" data-video="media/v/cata-la-quinta.mp4" tabindex="0" role="button" aria-label="Ver cata La Quinta">
       <img src="media/img/still-cata-brindis.jpg" alt="" loading="lazy">
-      <div class="duo">
-        <div class="side" data-video="media/v/cata-la-quinta.mp4" role="button" aria-label="Ver reel Cata La Quinta"><video src="media/v/cata-la-quinta.mp4" poster="media/img/poster-cata-la-quinta.jpg" muted loop playsinline preload="none"></video><span class="vl">Cata La Quinta</span></div>
-        <div class="side" data-video="media/v/alborada-reel.mp4" role="button" aria-label="Ver reel Alborada"><video src="media/v/alborada-reel.mp4" poster="media/img/poster-alborada-reel.jpg" muted loop playsinline preload="none"></video><span class="vl">Alborada</span></div>
-      </div>
-      <div class="ci"><div class="top"><span class="chip glass">Publicidad para redes</span><span class="num">04</span></div>
-      <div class="bot"><h3>Reels <em>publicitarios</em></h3><span class="dur"><span class="dot-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"/></svg></span>2 reels</span></div></div>
+      <div class="side"><video src="media/v/cata-la-quinta.mp4" poster="media/img/poster-cata-la-quinta.jpg" muted loop playsinline preload="none"></video></div>
+      <div class="ci"><div class="top"><span class="chip glass">Evento</span><span class="num">04</span></div>
+      <div class="bot"><h3>Cata <em>La Quinta</em></h3><span class="dur"><span class="dot-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"/></svg></span>0:49</span></div></div>
     </article>
   </div>
 </section>
