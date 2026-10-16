@@ -157,10 +157,16 @@ main,footer,.nav{position:relative;z-index:2}
 .card .dur{display:flex;align-items:center;gap:12px;font-size:15px}
 .card .dur .dot-play{width:66px;height:66px;transition:transform .5s var(--ease)}
 .card:hover .dot-play{transform:scale(1.12)}
-.card .side{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:84%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;z-index:1;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.card .duo{position:absolute;right:clamp(22px,3vw,48px);top:calc(50% + 14px);transform:translateY(-50%);height:72%;display:flex;gap:clamp(12px,1.6vw,24px);z-index:3}
+.card .side{position:relative;height:100%;aspect-ratio:9/16;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);cursor:pointer;transition:transform .6s var(--ease)}
+.card .side:hover{transform:translateY(-6px)}
+.card .vl{position:absolute;left:12px;bottom:12px;font-size:12px;padding:6px 11px;border-radius:999px;background:rgba(11,10,8,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--bone)}
+.card.vert h3{font-size:clamp(40px,4.6vw,84px);max-width:7ch}
+.card.vert .bot{flex-direction:column;align-items:flex-start;gap:18px}
+@media (max-width:1000px){.card.vert .duo{left:clamp(16px,3vw,32px);right:clamp(16px,3vw,32px);top:clamp(60px,9vw,90px);transform:none;height:auto}.card.vert .duo .side{flex:1;height:auto;border-radius:16px}.card.vert h3{max-width:none}.card.vert .bot{flex-direction:row;align-items:end}}
 .card .side video{width:100%;height:100%;object-fit:cover}
 .card.vert>img{filter:blur(24px) brightness(.45) saturate(1.2);transform:scale(1.2)}
-@media (max-width:800px){.card{height:72vh}.card .side{inset:0;left:0;top:0;transform:none;height:100%;width:100%;aspect-ratio:auto;border-radius:0;box-shadow:none}.card.vert .ci{background:linear-gradient(0deg,rgba(11,10,8,.85),transparent 45%)}.card.vert>img{filter:none;transform:none}.card h3{font-size:11vw}}
+@media (max-width:800px){.card{height:72vh}.card.vert h3{font-size:10vw}.card.vert .ci{background:linear-gradient(0deg,rgba(11,10,8,.85),transparent 45%)}.card h3{font-size:11vw}}
 
 /* alborada */
 .alb{position:relative;overflow:hidden}
@@ -403,11 +409,14 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
       <div class="ci"><div class="top"><span class="chip glass">Congreso científico</span><span class="num">03</span></div>
       <div class="bot"><h3>Petrophase <em>2022</em></h3><span class="dur"><span class="dot-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"/></svg></span>1:00</span></div></div>
     </article>
-    <article class="card vert" data-video="media/v/cata-la-quinta.mp4" tabindex="0" role="button" aria-label="Ver cata La Quinta">
+    <article class="card vert" id="alborada" data-video="media/v/cata-la-quinta.mp4" tabindex="0" role="button" aria-label="Ver reels publicitarios">
       <img src="media/img/still-cata-brindis.jpg" alt="" loading="lazy">
-      <div class="side"><video src="media/v/cata-la-quinta.mp4" poster="media/img/poster-cata-la-quinta.jpg" muted loop playsinline preload="none"></video></div>
-      <div class="ci"><div class="top"><span class="chip glass">Evento</span><span class="num">04</span></div>
-      <div class="bot"><h3>Cata <em>La Quinta</em></h3><span class="dur"><span class="dot-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"/></svg></span>0:49</span></div></div>
+      <div class="duo">
+        <div class="side" data-video="media/v/cata-la-quinta.mp4" role="button" aria-label="Ver reel Cata La Quinta"><video src="media/v/cata-la-quinta.mp4" poster="media/img/poster-cata-la-quinta.jpg" muted loop playsinline preload="none"></video><span class="vl">Cata La Quinta</span></div>
+        <div class="side" data-video="media/v/alborada-reel.mp4" role="button" aria-label="Ver reel Alborada"><video src="media/v/alborada-reel.mp4" poster="media/img/poster-alborada-reel.jpg" muted loop playsinline preload="none"></video><span class="vl">Alborada</span></div>
+      </div>
+      <div class="ci"><div class="top"><span class="chip glass">Publicidad para redes</span><span class="num">04</span></div>
+      <div class="bot"><h3>Reels <em>publicitarios</em></h3><span class="dur"><span class="dot-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"/></svg></span>2 reels</span></div></div>
     </article>
   </div>
 </section>
@@ -442,17 +451,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
   <div class="wrap bdots" id="bdots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
 </section>
 
-<section class="alb" id="alborada">
-  <div class="alb-in" id="albtrack">
-    <div class="alb-intro"><span class="label">Campaña</span><h2 class="h2">Albo<em>rada</em></h2><p>Un café de temporada, de la ficha técnica a redes, tienda y TV.</p></div>
-    <video class="rv" src="media/v/alborada-reel.mp4" poster="media/img/poster-alborada-reel.jpg" muted loop playsinline preload="none" data-auto aria-label="Reel Alborada"></video>
-    <img src="media/img/alborada-slide-1.jpg" alt="Bolsa de café Alborada" loading="lazy">
-    <img src="media/img/alborada-slide-2.jpg" alt="Pieza de lanzamiento con descuento" loading="lazy">
-    <img src="media/img/alborada-slide-3.jpg" alt="Ficha técnica Alborada" loading="lazy">
-    <video class="tv" src="media/v/alborada-tv.mp4" poster="media/img/poster-alborada-tv.jpg" muted loop playsinline preload="none" data-auto aria-label="Alborada para TV"></video>
-    <img src="media/img/alborada-slide-4.jpg" alt="Cierre de campaña Alborada" loading="lazy">
-  </div>
-</section>
+
 
 <div class="mv" id="mv" role="dialog" aria-modal="true" aria-label="Manual de marca">
   <div class="mv-top"><div class="mv-title" id="mvt"></div><div class="mv-count"><b id="mvc">01</b> / <span id="mvn">14</span></div><button class="mv-x glass" id="mvx" aria-label="Cerrar manual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
@@ -592,7 +591,7 @@ if(G&&!reduce){
   ScrollTrigger.matchMedia({'(min-width: 801px)':()=>{
     const hz=(sec,id,bar)=>{const tr=document.getElementById(id);
       const tw=gsap.to(tr,{x:()=>-(tr.scrollWidth-innerWidth),ease:'none',scrollTrigger:{trigger:sec,start:'top top',end:()=>'+='+(tr.scrollWidth-innerWidth),pin:true,scrub:1,invalidateOnRefresh:true,anticipatePin:1,onUpdate:s=>{if(bar)bar.style.transform=`scaleX(${s.progress})`;}}});};
-    hz('#metodo','mtrack',document.getElementById('mbar'));hz('#alborada','albtrack');
+    hz('#metodo','mtrack',document.getElementById('mbar'));
     const cards=gsap.utils.toArray('.card');
     cards.forEach((c,i)=>{if(i===cards.length-1)return;gsap.to(c,{scale:.94,opacity:0,ease:'none',scrollTrigger:{trigger:cards[i+1],start:'top 85%',end:'top 30%',scrub:true}});});
   }});
@@ -614,7 +613,7 @@ vids.forEach(v=>vio.observe(v));
 const lb=document.getElementById('lb'),lbv=document.getElementById('lbv'),lbx=document.getElementById('lbx');let last=null;
 const open=src=>{last=document.activeElement;lbv.src=src;lb.classList.add('open');lbv.muted=false;lbv.play().catch(()=>{});lenis&&lenis.stop();lbx.focus();};
 const close=()=>{lbv.pause();lbv.removeAttribute('src');lbv.load();lb.classList.remove('open');lenis&&lenis.start();last&&last.focus();};
-document.querySelectorAll('.card,#reel').forEach(c=>{c.addEventListener('click',()=>open(c.dataset.video));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(c.dataset.video);}});});
+document.querySelectorAll('.card,#reel').forEach(c=>{c.addEventListener('click',e=>{const t=e.target.closest('[data-video]')||c;open(t.dataset.video);});c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(c.dataset.video);}});});
 document.querySelectorAll('[data-auto]').forEach(v=>v.addEventListener('click',()=>open(v.getAttribute('src'))));
 lbx.onclick=close;lb.addEventListener('click',e=>{if(e.target===lb)close();});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))close();});
@@ -667,15 +666,17 @@ const cards=[...row.querySelectorAll('.bcard')];
 let x=0,setW=0,step=0,vx=0,target=null,hover=false,vis=false,dragging=false,moved=0,lx=0,lt=0,cur=0;
 const measure=()=>{step=cards[1].offsetLeft-cards[0].offsetLeft;setW=step*N;if(!x)x=-setW+ (tr.clientWidth-cards[0].offsetWidth)/2;};
 const wrap=()=>{while(x<=-2*setW)x+=setW;while(x>0)x-=setW;};
-const SPEED=reduce?0:-0.55;
+const SPEED=reduce?0:-1.1;
 new IntersectionObserver(es=>es.forEach(e=>{vis=e.isIntersecting;}),{threshold:.2}).observe(tr);
-tr.addEventListener('mouseenter',()=>hover=true);tr.addEventListener('mouseleave',()=>hover=false);
+tr.addEventListener('mouseenter',e=>{hover=true;mlx=e.clientX;});
+let mlx=null;tr.addEventListener('mousemove',e=>{if(dragging||reduce)return;if(mlx!==null){const dx=e.clientX-mlx;vx=Math.max(-9,Math.min(9,vx-dx*0.035));}mlx=e.clientX;});
+tr.addEventListener('mouseleave',()=>{mlx=null;});tr.addEventListener('mouseleave',()=>hover=false);
 let lastT=performance.now();
 const frame=t=>{const dt=Math.min(48,t-lastT)/16.67;lastT=t;
  if(setW){
   if(dragging){}
   else if(target!==null){const d=target-x;x+=d*0.09*dt;if(Math.abs(d)<.5){x=target;target=null;}}
-  else{ if(vis&&!brand&&!document.hidden){const sp=hover?SPEED*0.35:SPEED;x+=(sp+vx)*dt;} vx*=Math.pow(.93,dt);}
+  else{ if(vis&&!brand&&!document.hidden){const sp=hover?SPEED*0.6:SPEED;x+=(sp+vx)*dt;} vx*=Math.pow(.93,dt);}
   wrap();row.style.transform=`translate3d(${x}px,0,0)`;
   const mid=tr.clientWidth/2;let best=0,bd=1e9;
   cards.forEach((c,i)=>{const cx=x+c.offsetLeft+c.offsetWidth/2,d=Math.abs(cx-mid)/step,k=Math.min(d,1);
