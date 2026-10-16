@@ -184,10 +184,12 @@ main,footer,.nav{position:relative;z-index:2}
 .bbtn{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;transition:background .3s,color .3s}
 .bbtn:hover{background:var(--amber);color:var(--bg)}
 .bbtn svg{width:20px;height:20px}
-.btrack{display:flex;gap:clamp(16px,2vw,28px);overflow-x:auto;scroll-snap-type:x mandatory;padding:10px var(--gut) 30px;scrollbar-width:none;cursor:grab}
+.btrack{overflow:hidden;padding:10px 0 30px;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.brow{display:flex;gap:clamp(16px,2vw,28px);width:max-content;will-change:transform}
 .btrack::-webkit-scrollbar{display:none}
-.btrack.drag{cursor:grabbing;scroll-snap-type:none}
-.bcard{flex:none;transition:transform 1s var(--ease),opacity .9s;width:min(68vw,1080px,calc((100vh - 220px)*16/9));scroll-snap-align:center;text-align:left;position:relative;border-radius:var(--r);overflow:hidden;box-shadow:0 0 0 1px var(--line),0 40px 100px rgba(0,0,0,.45);transition:transform .7s var(--ease),opacity .6s;opacity:.45;transform:scale(.94)}
+.btrack.drag{cursor:grabbing}
+.bcard img{-webkit-user-drag:none;pointer-events:none}
+.bcard{flex:none;width:min(68vw,1080px,calc((100vh - 220px)*16/9));scroll-snap-align:center;text-align:left;position:relative;border-radius:var(--r);overflow:hidden;box-shadow:0 0 0 1px var(--line),0 40px 100px rgba(0,0,0,.45);will-change:transform,opacity}
 .bcard.on{opacity:1;transform:none}
 .bcard .bimg{display:block;aspect-ratio:16/9;position:relative;overflow:hidden;background:#000}
 .bcard .bimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),opacity .8s}
@@ -415,13 +417,13 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
     <div><span class="label">Diseño de marca</span><h2 class="h2">Marcas <em>con alma</em></h2><p class="bsub">Identidades completas: concepto, símbolo, color, tipografía y cada aplicación. Toca una marca para recorrer su manual.</p></div>
     <div class="bnav"><button class="bbtn glass" id="bprev" aria-label="Marca anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button><button class="bbtn glass" id="bnext" aria-label="Marca siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button></div>
   </div>
-  <div class="btrack" id="btrack">
+  <div class="btrack" id="btrack"><div class="brow" id="brow">
     <button class="bcard" data-brand="enzo" aria-label="Ver manual de marca de Enzo y Ríos">
-      <span class="bimg"><img src="media/manual/enzo/p-10.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/enzo/p-17.jpg" alt="" loading="lazy"></span>
+      <span class="bimg"><img src="media/manual/enzo/p-08.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/enzo/p-16.jpg" alt="" loading="lazy"></span>
       <span class="binfo"><span class="bn">01</span><span class="bt">Enzo <em>&amp; Ríos</em></span><span class="bm">Cocina ítalo-colombiana · 19 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </button>
     <button class="bcard" data-brand="mono" aria-label="Ver manual de marca de Mono Bordados Personalizados">
-      <span class="bimg"><img src="media/manual/mono/p-06.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/mono/p-07.jpg" alt="" loading="lazy"></span>
+      <span class="bimg"><img src="media/manual/mono/p-07.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/mono/p-06.jpg" alt="" loading="lazy"></span>
       <span class="binfo"><span class="bn">02</span><span class="bt">Mo<em>no</em></span><span class="bm">Bordados personalizados · 21 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </button>
     <button class="bcard" data-brand="vivo" aria-label="Ver manual de marca de Vivo Café">
@@ -436,7 +438,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
       <span class="bimg"><img src="media/manual/petit/p-06.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/petit/p-11.jpg" alt="" loading="lazy"></span>
       <span class="binfo"><span class="bn">05</span><span class="bt">Petit <em>Kangaroo</em></span><span class="bm">Productos para bebé · 42 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </button>
-  </div>
+  </div></div>
   <div class="wrap bdots" id="bdots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
 </section>
 
@@ -657,27 +659,43 @@ const tick=()=>{if(!drag){v*=0.94;boost*=0.9;x+=auto+v+boost*0.1;}
 (()=>{
 document.body.append(document.getElementById('mv'));
 const MAN={enzo:{t:'Enzo <em>&amp; Ríos</em>',n:19},mono:{t:'Mo<em>no</em>',n:21},vivo:{t:'Vivo <em>Café</em>',n:14},rabbit:{t:'Mr <em>Rabbit</em>',n:25},petit:{t:'Petit <em>Kangaroo</em>',n:42}};
-const tr=document.getElementById('btrack'),cards=[...tr.querySelectorAll('.bcard')],dots=[...document.querySelectorAll('#bdots i')];
-let cur=0,brand=null;
-const setOn=()=>{const mid=tr.scrollLeft+tr.clientWidth/2;let b=0,d=1e9;cards.forEach((c,i)=>{const x=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(x<d){d=x;b=i}});cur=b;cards.forEach((c,i)=>c.classList.toggle('on',i===b));dots.forEach((x,i)=>x.classList.toggle('on',i===b));};
-let tt;tr.addEventListener('scroll',()=>{clearTimeout(tt);tt=setTimeout(setOn,60)},{passive:true});setOn();addEventListener('resize',setOn);
-const go=i=>{i=Math.max(0,Math.min(cards.length-1,i));const c=cards[i];tr.scrollTo({left:c.offsetLeft-(tr.clientWidth-c.offsetWidth)/2,behavior:'smooth'});};
-document.getElementById('bprev').onclick=()=>go(cur-1);document.getElementById('bnext').onclick=()=>go(cur+1);
-dots.forEach((d,i)=>d.onclick=()=>go(i));
-/* avance automático */
-let hold=false,vis=false,auto=null;
-const tick=()=>{if(hold||!vis||brand||document.hidden)return;go(cur>=cards.length-1?0:cur+1);};
-const startAuto=()=>{clearInterval(auto);auto=setInterval(tick,3800);};
-new IntersectionObserver(es=>es.forEach(e=>{vis=e.isIntersecting;}),{threshold:.4}).observe(tr);
-tr.addEventListener('mouseenter',()=>hold=true);tr.addEventListener('mouseleave',()=>{hold=false;startAuto();});
-tr.addEventListener('touchstart',()=>{hold=true;},{passive:true});tr.addEventListener('touchend',()=>{setTimeout(()=>{hold=false;startAuto();},2500);},{passive:true});
-['bprev','bnext'].forEach(id=>document.getElementById(id).addEventListener('click',startAuto));
-startAuto();
-/* arrastrar con mouse */
-let down=false,moved=0,sx=0,sl=0;
-tr.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=0;sx=e.clientX;sl=tr.scrollLeft;});
-addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;moved=Math.abs(dx);if(moved>5)tr.classList.add('drag');tr.scrollLeft=sl-dx;});
-addEventListener('pointerup',()=>{if(!down)return;down=false;tr.classList.remove('drag');setTimeout(()=>go(cur),10);});
+const tr=document.getElementById('btrack'),row=document.getElementById('brow'),orig=[...row.querySelectorAll('.bcard')],N=orig.length,dots=[...document.querySelectorAll('#bdots i')];
+let brand=null;
+/* copias para un recorrido infinito */
+for(let k=0;k<2;k++)orig.forEach(c=>{const d=c.cloneNode(true);d.setAttribute('aria-hidden','true');d.tabIndex=-1;row.append(d);});
+const cards=[...row.querySelectorAll('.bcard')];
+let x=0,setW=0,step=0,vx=0,target=null,hover=false,vis=false,dragging=false,moved=0,lx=0,lt=0,cur=0;
+const measure=()=>{step=cards[1].offsetLeft-cards[0].offsetLeft;setW=step*N;if(!x)x=-setW+ (tr.clientWidth-cards[0].offsetWidth)/2;};
+const wrap=()=>{while(x<=-2*setW)x+=setW;while(x>0)x-=setW;};
+const SPEED=reduce?0:-0.55;
+new IntersectionObserver(es=>es.forEach(e=>{vis=e.isIntersecting;}),{threshold:.2}).observe(tr);
+tr.addEventListener('mouseenter',()=>hover=true);tr.addEventListener('mouseleave',()=>hover=false);
+let lastT=performance.now();
+const frame=t=>{const dt=Math.min(48,t-lastT)/16.67;lastT=t;
+ if(setW){
+  if(dragging){}
+  else if(target!==null){const d=target-x;x+=d*0.09*dt;if(Math.abs(d)<.5){x=target;target=null;}}
+  else{ if(vis&&!brand&&!document.hidden){const sp=hover?SPEED*0.35:SPEED;x+=(sp+vx)*dt;} vx*=Math.pow(.93,dt);}
+  wrap();row.style.transform=`translate3d(${x}px,0,0)`;
+  const mid=tr.clientWidth/2;let best=0,bd=1e9;
+  cards.forEach((c,i)=>{const cx=x+c.offsetLeft+c.offsetWidth/2,d=Math.abs(cx-mid)/step,k=Math.min(d,1);
+   c.style.transform=`scale(${1-k*.07})`;c.style.opacity=1-k*.55;if(d<bd){bd=d;best=i;}});
+  if(best%N!==cur){cur=best%N;dots.forEach((o,i)=>o.classList.toggle('on',i===cur));}
+ }
+ requestAnimationFrame(frame);};
+const goBy=n=>{wrap();target=(target??x)-n*step;const mid=tr.clientWidth/2;
+ /* alinear al centro de la tarjeta */
+ const cw=cards[0].offsetWidth;const base=Math.round((target-(mid-cw/2))/step)*step+(mid-cw/2);target=base;};
+document.getElementById('bprev').onclick=()=>goBy(-1);document.getElementById('bnext').onclick=()=>goBy(1);
+dots.forEach((d,i)=>d.onclick=()=>goBy(((i-cur)%N+N)%N>N/2?((i-cur)%N+N)%N-N:((i-cur)%N+N)%N));
+/* arrastrar con mouse o dedo */
+tr.addEventListener('pointerdown',e=>{dragging=true;moved=0;lx=e.clientX;lt=performance.now();vx=0;target=null;tr.classList.add('drag');});
+addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-lx,now=performance.now();lx=e.clientX;x+=dx;moved+=Math.abs(dx);vx=dx/Math.max(1,(now-lt)/16.67);lt=now;});
+const up=()=>{if(!dragging)return;dragging=false;tr.classList.remove('drag');vx=Math.max(-40,Math.min(40,vx));};
+addEventListener('pointerup',up);addEventListener('pointercancel',up);
+const ro=()=>{const old=setW;measure();if(old&&setW!==old)x=x/old*setW;};
+addEventListener('resize',ro);(document.fonts?document.fonts.ready:Promise.resolve()).then(ro);
+setTimeout(()=>{measure();requestAnimationFrame(frame);},50);
 /* visor */
 const mv=document.getElementById('mv'),img=document.getElementById('mvimg'),page=document.getElementById('mvpage'),th=document.getElementById('mvth'),
  cEl=document.getElementById('mvc'),nEl=document.getElementById('mvn'),bar=document.getElementById('mvbar'),tEl=document.getElementById('mvt');
@@ -706,7 +724,7 @@ const open=b=>{brand=b;pg=-1;last=document.activeElement;const m=MAN[b];tEl.inne
 };
 const close=()=>{const fin=()=>{mv.classList.remove('open');brand=null;document.body.style.overflow='';window.__lenis&&window.__lenis.start();last&&last.focus();};
  if(window.gsap&&!reduce)gsap.to(mv,{clipPath:'circle(0% at 50% 60%)',duration:.6,ease:'expo.in',onComplete:fin});else fin();};
-cards.forEach(c=>c.addEventListener('click',e=>{if(moved>5){e.preventDefault();return;}open(c.dataset.brand);}));
+cards.forEach(c=>c.addEventListener('click',e=>{if(moved>8){e.preventDefault();return;}open(c.dataset.brand);}));
 document.getElementById('mvx').onclick=close;
 document.getElementById('mvp').onclick=()=>!busy&&show(pg-1,-1);
 document.getElementById('mvnx').onclick=()=>!busy&&show(pg+1,1);
