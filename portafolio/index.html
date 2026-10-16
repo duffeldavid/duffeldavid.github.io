@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>David Solano | Dirección creativa</title>
-<meta name="description" content="David Solano, director creativo y diseñador gráfico en Bucaramanga. Estrategia, identidad, contenido y producción audiovisual.">
-<meta property="og:title" content="David Solano | Dirección creativa">
-<meta property="og:description" content="Estrategia, identidad, contenido y producción audiovisual.">
+<title>David Solano | Diseño de marcas y ecosistemas visuales</title>
+<meta name="description" content="David Solano, diseñador creativo de marcas y ecosistemas visuales en Bucaramanga. Identidad, estrategia, contenido y producción audiovisual.">
+<meta property="og:title" content="David Solano | Diseño de marcas y ecosistemas visuales">
+<meta property="og:description" content="Diseñador creativo de marcas y ecosistemas visuales. Identidad, estrategia, contenido y audiovisual.">
 <meta property="og:image" content="https://duffeldavid.github.io/portafolio/media/img/og.jpg">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0B0A08">
@@ -180,6 +180,7 @@ main,footer,.nav{position:relative;z-index:2}
 /* marcas: slider */
 .bhead{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:50px}
 .bnav{display:flex;gap:10px}
+.bsub{color:var(--bone-2);font-size:clamp(15px,1.3vw,18px);max-width:46ch;margin-top:18px}
 .bbtn{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;transition:background .3s,color .3s}
 .bbtn:hover{background:var(--amber);color:var(--bg)}
 .bbtn svg{width:20px;height:20px}
@@ -342,7 +343,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
 <section class="hero">
   <span class="eyebrow glass"><i></i>Disponible para nuevos proyectos</span>
   <h1 aria-label="David Solano"><span class="ln"><span>David</span></span><span class="ln"><span class="gt">Solano</span></span></h1>
-  <p class="sub">Dirección creativa, diseño y audiovisual</p>
+  <p class="sub">Diseñador creativo de marcas y ecosistemas visuales</p>
 </section>
 <div class="reelwrap">
   <div class="reel" id="reel" data-video="media/v/showreel.mp4" role="button" tabindex="0" aria-label="Ver showreel">
@@ -409,6 +410,32 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
   </div>
 </section>
 
+<section class="sec" id="identidad">
+  <div class="wrap bhead">
+    <div><span class="label">Diseño de marca</span><h2 class="h2">Marcas <em>con alma</em></h2><p class="bsub">Identidades completas: concepto, símbolo, color, tipografía y cada aplicación. Toca una marca para recorrer su manual.</p></div>
+    <div class="bnav"><button class="bbtn glass" id="bprev" aria-label="Marca anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button><button class="bbtn glass" id="bnext" aria-label="Marca siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button></div>
+  </div>
+  <div class="btrack" id="btrack">
+    <button class="bcard" data-brand="enzo" aria-label="Ver manual de marca de Enzo y Ríos">
+      <span class="bimg"><img src="media/manual/enzo/p-10.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/enzo/p-17.jpg" alt="" loading="lazy"></span>
+      <span class="binfo"><span class="bn">01</span><span class="bt">Enzo <em>&amp; Ríos</em></span><span class="bm">Cocina ítalo-colombiana · 19 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+    </button>
+    <button class="bcard" data-brand="vivo" aria-label="Ver manual de marca de Vivo Café">
+      <span class="bimg"><img src="media/manual/vivo/p-01.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/vivo/p-02.jpg" alt="" loading="lazy"></span>
+      <span class="binfo"><span class="bn">02</span><span class="bt">Vivo <em>Café</em></span><span class="bm">Café artesanal · 14 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+    </button>
+    <button class="bcard" data-brand="rabbit" aria-label="Ver manual de marca de Mr Rabbit">
+      <span class="bimg"><img src="media/manual/rabbit/p-01.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/rabbit/p-06.jpg" alt="" loading="lazy"></span>
+      <span class="binfo"><span class="bn">03</span><span class="bt">Mr <em>Rabbit</em></span><span class="bm">Café de carácter clásico · 25 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+    </button>
+    <button class="bcard" data-brand="petit" aria-label="Ver manual de marca de Petit Kangaroo">
+      <span class="bimg"><img src="media/manual/petit/p-06.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/petit/p-11.jpg" alt="" loading="lazy"></span>
+      <span class="binfo"><span class="bn">04</span><span class="bt">Petit <em>Kangaroo</em></span><span class="bm">Productos para bebé · 42 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+    </button>
+  </div>
+  <div class="wrap bdots" id="bdots"><i class="on"></i><i></i><i></i><i></i></div>
+</section>
+
 <section class="alb" id="alborada">
   <div class="alb-in" id="albtrack">
     <div class="alb-intro"><span class="label">Campaña</span><h2 class="h2">Albo<em>rada</em></h2><p>Un café de temporada, de la ficha técnica a redes, tienda y TV.</p></div>
@@ -419,28 +446,6 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
     <video class="tv" src="media/v/alborada-tv.mp4" poster="media/img/poster-alborada-tv.jpg" muted loop playsinline preload="none" data-auto aria-label="Alborada para TV"></video>
     <img src="media/img/alborada-slide-4.jpg" alt="Cierre de campaña Alborada" loading="lazy">
   </div>
-</section>
-
-<section class="sec" id="identidad">
-  <div class="wrap bhead">
-    <div><span class="label">Identidad</span><h2 class="h2">Marcas <em>con alma</em></h2></div>
-    <div class="bnav"><button class="bbtn glass" id="bprev" aria-label="Marca anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button><button class="bbtn glass" id="bnext" aria-label="Marca siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button></div>
-  </div>
-  <div class="btrack" id="btrack">
-    <button class="bcard" data-brand="vivo" aria-label="Ver manual de marca de Vivo Café">
-      <span class="bimg"><img src="media/manual/vivo/p-01.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/vivo/p-02.jpg" alt="" loading="lazy"></span>
-      <span class="binfo"><span class="bn">01</span><span class="bt">Vivo <em>Café</em></span><span class="bm">Café artesanal · 14 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-    </button>
-    <button class="bcard" data-brand="rabbit" aria-label="Ver manual de marca de Mr Rabbit">
-      <span class="bimg"><img src="media/manual/rabbit/p-01.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/rabbit/p-06.jpg" alt="" loading="lazy"></span>
-      <span class="binfo"><span class="bn">02</span><span class="bt">Mr <em>Rabbit</em></span><span class="bm">Café de carácter clásico · 25 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-    </button>
-    <button class="bcard" data-brand="petit" aria-label="Ver manual de marca de Petit Kangaroo">
-      <span class="bimg"><img src="media/manual/petit/p-06.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/petit/p-11.jpg" alt="" loading="lazy"></span>
-      <span class="binfo"><span class="bn">03</span><span class="bt">Petit <em>Kangaroo</em></span><span class="bm">Productos para bebé · 42 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-    </button>
-  </div>
-  <div class="wrap bdots" id="bdots"><i class="on"></i><i></i><i></i></div>
 </section>
 
 <div class="mv" id="mv" role="dialog" aria-modal="true" aria-label="Manual de marca">
@@ -486,9 +491,9 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
       </ul>
       <div class="kit">
         <div class="kit-h"><span>Cómo trabajo hoy</span></div>
+        <div class="kr"><b>Diseño</b><p>Marcas y ecosistemas visuales: identidad, manuales, sitios web, contenido y piezas de campaña</p></div>
         <div class="kr"><b>Pienso</b><p>Estrategia de marca, dirección creativa y de arte, guion y narrativa</p></div>
-        <div class="kr"><b>Creo</b><p>Identidad visual, contenido para redes, sitios web y piezas de campaña</p></div>
-        <div class="kr"><b>Filmo</b><p>Dirección de rodaje, cámara, luz y sonido con equipo propio; edición y color</p></div>
+        <div class="kr"><b>Filmo</b><p>Mi plus: dirección de rodaje, cámara, luz y sonido con equipo propio; edición y color</p></div>
         <div class="kr ai"><b>Acelero con IA</b><p>Flujos con Claude y Claude Code para investigar, escribir, prototipar webs y automatizar tareas</p><i class="spark" aria-hidden="true"></i></div>
         <div class="tools" aria-label="Herramientas"><span>Claude</span><span>Claude Code</span><span>Notion</span><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span><span>Illustrator</span><span>Lightroom</span><span>Español · English</span></div>
       </div>
@@ -647,7 +652,7 @@ const tick=()=>{if(!drag){v*=0.94;boost*=0.9;x+=auto+v+boost*0.1;}
 /* slider de marcas y visor de manuales */
 (()=>{
 document.body.append(document.getElementById('mv'));
-const MAN={vivo:{t:'Vivo <em>Café</em>',n:14},rabbit:{t:'Mr <em>Rabbit</em>',n:25},petit:{t:'Petit <em>Kangaroo</em>',n:42}};
+const MAN={enzo:{t:'Enzo <em>&amp; Ríos</em>',n:19},vivo:{t:'Vivo <em>Café</em>',n:14},rabbit:{t:'Mr <em>Rabbit</em>',n:25},petit:{t:'Petit <em>Kangaroo</em>',n:42}};
 const tr=document.getElementById('btrack'),cards=[...tr.querySelectorAll('.bcard')],dots=[...document.querySelectorAll('#bdots i')];
 let cur=0,brand=null;
 const setOn=()=>{const mid=tr.scrollLeft+tr.clientWidth/2;let b=0,d=1e9;cards.forEach((c,i)=>{const x=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(x<d){d=x;b=i}});cur=b;cards.forEach((c,i)=>c.classList.toggle('on',i===b));dots.forEach((x,i)=>x.classList.toggle('on',i===b));};
