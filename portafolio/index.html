@@ -259,9 +259,24 @@ main,footer,.nav{position:relative;z-index:2}
 .tl .y{font-family:var(--serif);font-style:italic;color:var(--amber);font-size:19px}
 .tl h4{font-family:var(--serif);font-weight:300;font-size:clamp(26px,2.4vw,38px);letter-spacing:-.03em;line-height:1.05}
 .tl .r{color:var(--bone-2);font-size:15px;margin-top:4px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
-.chips span{font-size:14px;padding:9px 15px;border-radius:999px;background:rgba(239,232,220,.05);border:1px solid var(--line)}
-.chips span.k{border-color:rgba(217,163,91,.4);color:var(--amber)}
+.kit{margin-top:44px;border-top:1px solid var(--line)}
+.kit-h{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:rgba(239,232,220,.5);padding:16px 0 4px}
+.kit-h .deg{color:var(--amber)}
+.kr{position:relative;display:grid;grid-template-columns:minmax(160px,1fr) 2fr;gap:24px;align-items:baseline;padding:22px 18px;margin:0 -18px;border-radius:18px;transition:background .5s var(--ease)}
+.kr+.kr{border-top:1px solid var(--line)}
+.kr:hover{background:rgba(239,232,220,.04)}
+.kr b{font-family:var(--serif);font-weight:250;font-size:clamp(28px,2.6vw,42px);letter-spacing:-.04em;line-height:1;transition:transform .6s var(--ease),color .4s}
+.kr:hover b{transform:translateX(10px);color:var(--amber)}
+.kr p{color:rgba(239,232,220,.62);font-size:16px;max-width:46ch}
+.kr.ai{overflow:hidden;background:linear-gradient(100deg,rgba(217,163,91,.13),rgba(217,163,91,0) 70%);border-top-color:transparent}
+.kr.ai b{font-style:italic;color:var(--amber)}
+.kr.ai .spark{position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(242,201,138,.18) 50%,transparent 70%);transform:translateX(-100%);animation:sweep 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes sweep{60%,100%{transform:translateX(100%)}}
+.tools{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:22px;font-size:13px;color:rgba(239,232,220,.42)}
+.tools span{position:relative}
+.tools span+span::before{content:"";position:absolute;left:-11px;top:50%;width:3px;height:3px;border-radius:50%;background:rgba(217,163,91,.6)}
+@media (max-width:600px){.kr{grid-template-columns:1fr;gap:6px}}
+@media (prefers-reduced-motion:reduce){.kr.ai .spark{animation:none}}
 @media (max-width:600px){.tl li{grid-template-columns:1fr;gap:4px}}
 
 /* contacto */
@@ -453,8 +468,13 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
         <li><span class="y">2018</span><div><h4>Somos La Comarca SAS</h4><div class="r">Diseñador gráfico junior</div></div></li>
         <li><span class="y">2018</span><div><h4>Latín Creativos</h4><div class="r">Diseñador freelance</div></div></li>
       </ul>
-      <div class="chips">
-        <span class="k">Diseñador Gráfico Profesional, UDI 2019</span><span>Photoshop</span><span>Illustrator</span><span>InDesign</span><span>Premiere Pro</span><span>After Effects</span><span>Cinema 4D</span><span>Lightroom</span><span>Diseño web</span><span>Fotografía</span><span>Español e inglés</span>
+      <div class="kit">
+        <div class="kit-h"><span>Cómo trabajo hoy</span><span class="deg">Diseñador Gráfico Profesional, UDI</span></div>
+        <div class="kr"><b>Pienso</b><p>Estrategia de marca, dirección creativa y de arte, guion y narrativa</p></div>
+        <div class="kr"><b>Creo</b><p>Identidad visual, contenido para redes, sitios web y piezas de campaña</p></div>
+        <div class="kr"><b>Filmo</b><p>Dirección de rodaje, cámara, luz y sonido con equipo propio; edición y color</p></div>
+        <div class="kr ai"><b>Acelero con IA</b><p>Flujos con Claude y Claude Code para investigar, escribir, prototipar webs y automatizar tareas</p><i class="spark" aria-hidden="true"></i></div>
+        <div class="tools" aria-label="Herramientas"><span>Claude</span><span>Claude Code</span><span>Notion</span><span>Premiere Pro</span><span>After Effects</span><span>Photoshop</span><span>Illustrator</span><span>Lightroom</span><span>Español · English</span></div>
       </div>
     </div>
   </div>
