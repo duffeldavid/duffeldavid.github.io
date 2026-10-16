@@ -409,7 +409,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
       <div class="ci"><div class="top"><span class="chip glass">Congreso científico</span><span class="num">03</span></div>
       <div class="bot"><h3>Petrophase <em>2022</em></h3><span class="dur"><span class="dot-play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"/></svg></span>1:00</span></div></div>
     </article>
-    <article class="card vert" id="alborada" data-video="media/v/cata-la-quinta.mp4" tabindex="0" role="button" aria-label="Ver reels publicitarios">
+    <article class="card vert" data-video="media/v/cata-la-quinta.mp4" tabindex="0" role="button" aria-label="Ver reels publicitarios">
       <img src="media/img/still-cata-brindis.jpg" alt="" loading="lazy">
       <div class="duo">
         <div class="side" data-video="media/v/cata-la-quinta.mp4" role="button" aria-label="Ver reel Cata La Quinta"><video src="media/v/cata-la-quinta.mp4" poster="media/img/poster-cata-la-quinta.jpg" muted loop playsinline preload="none"></video><span class="vl">Cata La Quinta</span></div>
@@ -463,6 +463,18 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
   <div class="mv-bar"><i id="mvbar"></i></div>
   <div class="mv-thumbs" id="mvth"></div>
 </div>
+
+<section class="alb" id="alborada">
+  <div class="alb-in" id="albtrack">
+    <div class="alb-intro"><span class="label">Campaña</span><h2 class="h2">Albo<em>rada</em></h2><p>Un café de temporada, de la ficha técnica a redes, tienda y TV.</p></div>
+    <video class="rv" src="media/v/alborada-reel.mp4" poster="media/img/poster-alborada-reel.jpg" muted loop playsinline preload="none" data-auto aria-label="Reel Alborada"></video>
+    <img src="media/img/alborada-slide-1.jpg" alt="Bolsa de café Alborada" loading="lazy">
+    <img src="media/img/alborada-slide-2.jpg" alt="Pieza de lanzamiento con descuento" loading="lazy">
+    <img src="media/img/alborada-slide-3.jpg" alt="Ficha técnica Alborada" loading="lazy">
+    <video class="tv" src="media/v/alborada-tv.mp4" poster="media/img/poster-alborada-tv.jpg" muted loop playsinline preload="none" data-auto aria-label="Alborada para TV"></video>
+    <img src="media/img/alborada-slide-4.jpg" alt="Cierre de campaña Alborada" loading="lazy">
+  </div>
+</section>
 
 <div class="clients" aria-label="Marcas con las que trabajo"><div class="row" id="cl">
   <a href="https://www.forestal.cafe" target="_blank" rel="noopener">Café Forestal</a><i></i><a href="https://www.instagram.com/carnesmanzanares/" target="_blank" rel="noopener">Carnes Manzanares</a><i></i><span>Vivo Café</span><i></i><span>Mono</span><i></i><span>Mr Rabbit</span><i></i><span>Petit Kangaroo</span><i></i><span>Enzo &amp; Ríos</span><i></i><span>Aryliz</span><i></i>
@@ -591,7 +603,7 @@ if(G&&!reduce){
   ScrollTrigger.matchMedia({'(min-width: 801px)':()=>{
     const hz=(sec,id,bar)=>{const tr=document.getElementById(id);
       const tw=gsap.to(tr,{x:()=>-(tr.scrollWidth-innerWidth),ease:'none',scrollTrigger:{trigger:sec,start:'top top',end:()=>'+='+(tr.scrollWidth-innerWidth),pin:true,scrub:1,invalidateOnRefresh:true,anticipatePin:1,onUpdate:s=>{if(bar)bar.style.transform=`scaleX(${s.progress})`;}}});};
-    hz('#metodo','mtrack',document.getElementById('mbar'));
+    hz('#metodo','mtrack',document.getElementById('mbar'));hz('#alborada','albtrack');
     const cards=gsap.utils.toArray('.card');
     cards.forEach((c,i)=>{if(i===cards.length-1)return;gsap.to(c,{scale:.94,opacity:0,ease:'none',scrollTrigger:{trigger:cards[i+1],start:'top 85%',end:'top 30%',scrub:true}});});
   }});
