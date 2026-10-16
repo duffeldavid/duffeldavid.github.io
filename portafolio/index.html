@@ -259,6 +259,17 @@ main,footer,.nav{position:relative;z-index:2}
 .tl .y{font-family:var(--serif);font-style:italic;color:var(--amber);font-size:19px}
 .tl h4{font-family:var(--serif);font-weight:300;font-size:clamp(26px,2.4vw,38px);letter-spacing:-.03em;line-height:1.05}
 .tl .r{color:var(--bone-2);font-size:15px;margin-top:4px}
+.edu{position:relative;overflow:hidden;display:grid;grid-template-columns:auto 1fr auto;gap:clamp(16px,2.4vw,32px);align-items:center;border-radius:var(--r);padding:clamp(22px,3vw,36px);margin-bottom:34px;border-color:rgba(217,163,91,.32)}
+.edu::before{content:"";position:absolute;inset:0;background:radial-gradient(600px circle at 0% 0%,rgba(217,163,91,.2),transparent 60%);pointer-events:none}
+.edu>*{position:relative}
+.edu-cap{width:clamp(56px,6vw,76px);height:clamp(56px,6vw,76px);border-radius:22px;background:var(--grad);display:grid;place-items:center;color:var(--bone);box-shadow:0 18px 44px rgba(217,163,91,.25)}
+.edu-cap svg{width:55%;height:55%}
+.edu-k{font-size:13px;color:var(--amber)}
+.edu h3{font-family:var(--serif);font-weight:250;font-size:clamp(30px,3.4vw,56px);letter-spacing:-.045em;line-height:1;margin:6px 0 8px}
+.edu h3 em{font-style:italic;color:var(--amber)}
+.edu p{color:rgba(239,232,220,.65);font-size:clamp(14px,1.2vw,17px)}
+.edu-y{font-family:var(--serif);font-style:italic;font-weight:200;font-size:clamp(44px,5vw,84px);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(217,163,91,.7)}
+@media (max-width:600px){.edu{grid-template-columns:auto 1fr}.edu-y{grid-column:1/-1;justify-self:end;margin-top:-6px}}
 .kit{margin-top:44px;border-top:1px solid var(--line)}
 .kit-h{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:rgba(239,232,220,.5);padding:16px 0 4px}
 .kit-h .deg{color:var(--amber)}
@@ -460,6 +471,11 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
     <div>
       <span class="label">Recorrido</span>
       <h2 class="h2" style="margin-bottom:40px">Ocho años <em>de oficio</em></h2>
+      <div class="edu glass">
+        <span class="edu-cap" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></span>
+        <div><span class="edu-k">Formación profesional</span><h3>Diseñador Gráfico <em>Profesional</em></h3><p>Universidad de Investigación y Desarrollo, UDI · Bucaramanga</p></div>
+        <span class="edu-y">2019</span>
+      </div>
       <ul class="tl">
         <li><span class="y">2023 — hoy</span><div><h4>Independiente</h4><div class="r">Grupo Manzanares, Café Forestal, creación de marcas y redes</div></div></li>
         <li><span class="y">2021 — 2023</span><div><h4>Alimentos Colombianos de Origen</h4><div class="r">Diseñador gráfico y creador de contenido</div></div></li>
@@ -469,7 +485,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
         <li><span class="y">2018</span><div><h4>Latín Creativos</h4><div class="r">Diseñador freelance</div></div></li>
       </ul>
       <div class="kit">
-        <div class="kit-h"><span>Cómo trabajo hoy</span><span class="deg">Diseñador Gráfico Profesional, UDI</span></div>
+        <div class="kit-h"><span>Cómo trabajo hoy</span></div>
         <div class="kr"><b>Pienso</b><p>Estrategia de marca, dirección creativa y de arte, guion y narrativa</p></div>
         <div class="kr"><b>Creo</b><p>Identidad visual, contenido para redes, sitios web y piezas de campaña</p></div>
         <div class="kr"><b>Filmo</b><p>Dirección de rodaje, cámara, luz y sonido con equipo propio; edición y color</p></div>
@@ -487,7 +503,6 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
     <div class="links">
       <a class="btn p mag" href="https://wa.me/573003748788?text=Hola%20David%2C%20vi%20tu%20portafolio" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.2c1.9 1 4 1.6 6.1 1.6 7 0 12.6-5.6 12.6-12.6S23 3 16 3zm5.9 15.1c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2s0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>WhatsApp</a>
       <a class="btn g glass mag" href="mailto:duffeldavid2183@gmail.com">duffeldavid2183@gmail.com</a>
-      <a class="btn g glass mag" href="David-Solano-Postulacion.pdf" download>Descargar PDF</a>
     </div>
   </div>
 </section>
