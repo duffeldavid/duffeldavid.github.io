@@ -420,20 +420,24 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
       <span class="bimg"><img src="media/manual/enzo/p-10.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/enzo/p-17.jpg" alt="" loading="lazy"></span>
       <span class="binfo"><span class="bn">01</span><span class="bt">Enzo <em>&amp; Ríos</em></span><span class="bm">Cocina ítalo-colombiana · 19 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </button>
+    <button class="bcard" data-brand="mono" aria-label="Ver manual de marca de Mono Bordados Personalizados">
+      <span class="bimg"><img src="media/manual/mono/p-06.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/mono/p-07.jpg" alt="" loading="lazy"></span>
+      <span class="binfo"><span class="bn">02</span><span class="bt">Mo<em>no</em></span><span class="bm">Bordados personalizados · 21 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+    </button>
     <button class="bcard" data-brand="vivo" aria-label="Ver manual de marca de Vivo Café">
       <span class="bimg"><img src="media/manual/vivo/p-01.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/vivo/p-02.jpg" alt="" loading="lazy"></span>
-      <span class="binfo"><span class="bn">02</span><span class="bt">Vivo <em>Café</em></span><span class="bm">Café artesanal · 14 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      <span class="binfo"><span class="bn">03</span><span class="bt">Vivo <em>Café</em></span><span class="bm">Café artesanal · 14 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </button>
     <button class="bcard" data-brand="rabbit" aria-label="Ver manual de marca de Mr Rabbit">
       <span class="bimg"><img src="media/manual/rabbit/p-01.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/rabbit/p-06.jpg" alt="" loading="lazy"></span>
-      <span class="binfo"><span class="bn">03</span><span class="bt">Mr <em>Rabbit</em></span><span class="bm">Café de carácter clásico · 25 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      <span class="binfo"><span class="bn">04</span><span class="bt">Mr <em>Rabbit</em></span><span class="bm">Café de carácter clásico · 25 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </button>
     <button class="bcard" data-brand="petit" aria-label="Ver manual de marca de Petit Kangaroo">
       <span class="bimg"><img src="media/manual/petit/p-06.jpg" alt="" loading="lazy"><img class="alt" src="media/manual/petit/p-11.jpg" alt="" loading="lazy"></span>
-      <span class="binfo"><span class="bn">04</span><span class="bt">Petit <em>Kangaroo</em></span><span class="bm">Productos para bebé · 42 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      <span class="binfo"><span class="bn">05</span><span class="bt">Petit <em>Kangaroo</em></span><span class="bm">Productos para bebé · 42 páginas</span><span class="bcta">Ver manual<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
     </button>
   </div>
-  <div class="wrap bdots" id="bdots"><i class="on"></i><i></i><i></i><i></i></div>
+  <div class="wrap bdots" id="bdots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
 </section>
 
 <section class="alb" id="alborada">
@@ -652,7 +656,7 @@ const tick=()=>{if(!drag){v*=0.94;boost*=0.9;x+=auto+v+boost*0.1;}
 /* slider de marcas y visor de manuales */
 (()=>{
 document.body.append(document.getElementById('mv'));
-const MAN={enzo:{t:'Enzo <em>&amp; Ríos</em>',n:19},vivo:{t:'Vivo <em>Café</em>',n:14},rabbit:{t:'Mr <em>Rabbit</em>',n:25},petit:{t:'Petit <em>Kangaroo</em>',n:42}};
+const MAN={enzo:{t:'Enzo <em>&amp; Ríos</em>',n:19},mono:{t:'Mo<em>no</em>',n:21},vivo:{t:'Vivo <em>Café</em>',n:14},rabbit:{t:'Mr <em>Rabbit</em>',n:25},petit:{t:'Petit <em>Kangaroo</em>',n:42}};
 const tr=document.getElementById('btrack'),cards=[...tr.querySelectorAll('.bcard')],dots=[...document.querySelectorAll('#bdots i')];
 let cur=0,brand=null;
 const setOn=()=>{const mid=tr.scrollLeft+tr.clientWidth/2;let b=0,d=1e9;cards.forEach((c,i)=>{const x=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(x<d){d=x;b=i}});cur=b;cards.forEach((c,i)=>c.classList.toggle('on',i===b));dots.forEach((x,i)=>x.classList.toggle('on',i===b));};
