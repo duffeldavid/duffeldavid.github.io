@@ -929,6 +929,8 @@ const CATS=[
  {n:'Producto y lanzamientos',d:'Ediciones de temporada y el lanzamiento de la página web.'}
 ];
 const REELS=[
+ ['cata','Cata en La Quinta','Café Forestal',0,'0:49'],
+ ['lanzamiento','Desde donde estés','Café Forestal',0,'0:34'],
  ['produccion','Del grano a tu mesa','Café Forestal',0,'0:23'],
  ['tatiana','La voz de la finca','Café Forestal',0,'1:00'],
  ['fincas-mnz','Fincas responsables','Carnes Manzanares',0,'0:20'],
@@ -936,7 +938,6 @@ const REELS=[
  ['asado','Al fuego','Carnes Manzanares',1,'0:15'],
  ['especialidades','Especialidades de temporada','Carnes Manzanares',1,'0:24'],
  ['canaveral','Nuevo punto Cañaveral','Carnes Manzanares',1,'0:37'],
- ['cata','Cata en La Quinta','Café Forestal',2,'0:49'],
  ['arte-latte','Arte latte','Café Forestal',2,'0:12'],
  ['prensa','Prensa francesa a la mesa','Café Forestal',2,'0:43'],
  ['bebidas','Bebidas refrescantes','Café Forestal',2,'0:21'],
@@ -945,7 +946,6 @@ const REELS=[
  ['bourbon','Bourbon Rosado','Café Forestal',3,'0:36'],
  ['legado','Lanzamiento Legado','Café Forestal',3,'0:59'],
  ['colombia','Edición Colombia','Café Forestal',3,'0:40'],
- ['lanzamiento','Desde donde estés','Café Forestal',3,'0:34'],
  ['chucureno','Chocolate Chucureño','Chucureño',3,'0:23']
 ].map(([k,t,b,c,d])=>({k,t,b,c,d}));
 const INST={
@@ -971,7 +971,7 @@ REELS.forEach((r,i)=>{
   if(r.c!==lastCat){lastCat=r.c;const c=D.createElement('div');c.className='rcat';
     c.innerHTML=`<span class="n">${pad(r.c+1)}</span><h3>${CATS[r.c].n}</h3><p>${CATS[r.c].d}</p>`;tr.append(c);}
   const b=D.createElement('button');b.className='rt';b.dataset.i=i;b.dataset.cur='Ver';b.setAttribute('aria-label',`Ver reel ${r.t}, ${r.b}`);
-  b.innerHTML=`<span class="rv"><img src="media/r/${r.k}.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" data-src="media/rp/${r.k}.mp4" class="auto"></video><span class="dur">${r.d}</span><span class="pl">${play}</span></span><span class="rm"><b>${r.t}</b><span>${r.b}</span></span>`;
+  b.innerHTML=`<span class="rv"><img src="media/r/${r.k}.jpg" alt="" decoding="async"><video muted loop playsinline preload="none" data-src="media/rp/${r.k}.mp4" class="auto"></video><span class="dur">${r.d}</span><span class="pl">${play}</span></span><span class="rm"><b>${r.t}</b><span>${r.b}</span></span>`;
   tr.append(b);
 });
 
